@@ -1,0 +1,731 @@
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+SUMMARY:MS365 für die Schulverwaltung - BLOCK A
+DTSTART;TZID="UTC+02:00":20261016T093000
+DTEND;TZID="UTC+02:00":20261016T170000
+DESCRIPTION:https://www.notion.so/MS365-f-r-die-Schulverwaltung-BLOCK-A-35
+ 79ae772ba68001a6bdffc37768f207
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MS365 für die Schulverwaltung - BLOCK B
+DTSTART;TZID="UTC+01:00":20261106T093000
+DTEND;TZID="UTC+01:00":20261106T170000
+DESCRIPTION:https://www.notion.so/MS365-f-r-die-Schulverwaltung-BLOCK-B-35
+ 79ae772ba68012b0dce759737ae2c6
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MS365 für die Schulverwaltung - BLOCK C
+DTSTART;TZID="UTC+01:00":20261120T093000
+DTEND;TZID="UTC+01:00":20261120T173000
+DESCRIPTION:https://www.notion.so/MS365-f-r-die-Schulverwaltung-BLOCK-C-35
+ 79ae772ba6806bb99fed47366ce918
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRWKS: Einführung in das Arbeiten mit Microsoft Copilot
+DTSTART;TZID="UTC+01:00":20261214T090000
+DTEND;TZID="UTC+01:00":20261214T130000
+DESCRIPTION:https://www.notion.so/Webinar-WRWKS-Einf-hrung-in-das-Arbeiten
+ -mit-Microsoft-Copilot-3579ae772ba68026b726e06c4e84debf
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:BFI Wien: KI-Training für Lehrkräfte
+DTSTART;TZID="UTC+02:00":20260507T090000
+DTEND;TZID="UTC+02:00":20260507T120000
+DESCRIPTION:https://www.notion.so/BFI-Wien-KI-Training-f-r-Lehrkr-fte-3489
+ ae772ba680ee8355e3f76a0205eb
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI im Unterricht - SCHILF BAfEP Steyr
+DTSTART;TZID="UTC+02:00":20260526T140000
+DTEND;TZID="UTC+02:00":20260526T173000
+DESCRIPTION:https://www.notion.so/KI-im-Unterricht-SCHILF-BAfEP-Steyr-86ea
+ a74fb29e48d8a8300042897d5db5
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote für Fortgeschrittene
+DTSTART;TZID="UTC+01:00":20270120T140000
+DTEND;TZID="UTC+01:00":20270120T173000
+DESCRIPTION:https://www.notion.so/OneNote-f-r-Fortgeschrittene-33b9ae772ba
+ 680aa823ffb75f2df8fa8
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote für Fortgeschrittene
+DTSTART;TZID="UTC+01:00":20270114T143000
+DTEND;TZID="UTC+01:00":20270114T160000
+DESCRIPTION:https://www.notion.so/OneNote-f-r-Fortgeschrittene-08cafaa9660
+ 143abbc665cdb5e9aed9a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Schulorganisation mit MS365-Tools - best practice
+DTSTART;TZID="UTC+01:00":20261203T140000
+DTEND;TZID="UTC+01:00":20261203T181500
+DESCRIPTION:https://www.notion.so/Schulorganisation-mit-MS365-Tools-best-p
+ ractice-33b9ae772ba680b785b8dd96f7e2c17f
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft Copilot für Fortgeschrittene
+DTSTART;TZID="UTC+01:00":20261125T140000
+DTEND;TZID="UTC+01:00":20261125T173000
+DESCRIPTION:https://www.notion.so/Microsoft-Copilot-f-r-Fortgeschrittene-3
+ 3b9ae772ba680c99697f1c9cd873fbf
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft KI + Mathe Tools für den Mathematikunterricht 
+DTSTART;TZID="UTC+01:00":20261119T143000
+DTEND;TZID="UTC+01:00":20261119T180000
+DESCRIPTION:https://www.notion.so/Microsoft-KI-Mathe-Tools-f-r-den-Mathema
+ tikunterricht-33b9ae772ba680b5bf49d1563f82298a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Lernwerkzeuge von Microsoft für den Unterricht
+DTSTART;TZID="UTC+01:00":20261117T140000
+DTEND;TZID="UTC+01:00":20261117T173000
+DESCRIPTION:https://www.notion.so/KI-Lernwerkzeuge-von-Microsoft-f-r-den-U
+ nterricht-33b9ae772ba680a1a20fcf17c40aa843
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:PowerPoint-Features und Profi-Tipps für den erfolgreichen Einsatz
+DTSTART;TZID="UTC+02:00":20261021T140000
+DTEND;TZID="UTC+02:00":20261021T173000
+DESCRIPTION:https://www.notion.so/PowerPoint-Features-und-Profi-Tipps-f-r-
+ den-erfolgreichen-Einsatz-33b9ae772ba680a38658d320b6ce9a2a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:PH OÖ: Microsoft Copilot - Dein persönlicher KI-Assistent für d
+ einen Unterricht
+DTSTART;TZID="UTC+02:00":20260930T140000
+DTEND;TZID="UTC+02:00":20260930T173000
+DESCRIPTION:https://www.notion.so/PH-O-Microsoft-Copilot-Dein-pers-nlicher
+ -KI-Assistent-f-r-deinen-Unterricht-33b9ae772ba68088a9efe6ca019abd9c
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:LIVE-DEMO GigPal
+DTSTART;TZID="UTC+02:00":20260410T160000
+DTEND;TZID="UTC+02:00":20260410T173000
+DESCRIPTION:https://www.notion.so/LIVE-DEMO-GigPal-33a9ae772ba680eab29ff52
+ 1a3204775
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Workshop MS Teams MS Ennsleite
+DTSTART;TZID="UTC+02:00":20260519T140000
+DTEND;TZID="UTC+02:00":20260519T173000
+DESCRIPTION:https://www.notion.so/Workshop-MS-Teams-MS-Ennsleite-32f9ae772
+ ba68038924efde5d5d8ee96
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SCHILF Forstschule: KI im Unterricht
+DTSTART;TZID="UTC+02:00":20260918T141500
+DTEND;TZID="UTC+02:00":20260918T172000
+DESCRIPTION:https://www.notion.so/SCHILF-Forstschule-KI-im-Unterricht-3259
+ ae772ba68042852cebb49e809fe0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Launch-DEMO: GigPal - Dein Band Companion
+DTSTART;TZID="UTC+01:00":20260324T160000
+DTEND;TZID="UTC+01:00":20260324T170000
+DESCRIPTION:https://www.notion.so/Launch-DEMO-GigPal-Dein-Band-Companion-3
+ 239ae772ba680949e87ccd78b2cf8ae
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:brAInfood PH Wien: KI-Agents für den (Mathematik-) Unterricht
+DTSTART;TZID="UTC+01:00":20261130T160000
+DTEND;TZID="UTC+01:00":20261130T173000
+DESCRIPTION:https://www.notion.so/brAInfood-PH-Wien-KI-Agents-f-r-den-Math
+ ematik-Unterricht-d694e34c54d742209e261c5ed462ffcd
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Von der Aufgabe bis zum Feedback: KI‑gestütztes Prüfen & Beurt
+ eilen in Mathe
+DTSTART;TZID="UTC+01:00":20261112T143000
+DTEND;TZID="UTC+01:00":20261112T173000
+DESCRIPTION:https://www.notion.so/Von-der-Aufgabe-bis-zum-Feedback-KI-gest
+ -tztes-Pr-fen-Beurteilen-in-Mathe-581545db3e584c50bc1bf1a33566cdae
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Vom Tafelbild zum Lernpfad - Interaktive Lernaktivitäten aus vorh
+ andenen Unterlagen
+DTSTART;TZID="UTC+01:00":20270112T160000
+DTEND;TZID="UTC+01:00":20270112T173000
+DESCRIPTION:https://www.notion.so/Vom-Tafelbild-zum-Lernpfad-Interaktive-L
+ ernaktivit-ten-aus-vorhandenen-Unterlagen-3119ae772ba680e78131ec8b5dae7239
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lernwirksame Methoden für den KI-Einsatz im Mathematikunterricht
+DTSTART;TZID="UTC+01:00":20270316T140000
+DTEND;TZID="UTC+01:00":20270316T180000
+DESCRIPTION:https://www.notion.so/Lernwirksame-Methoden-f-r-den-KI-Einsatz
+ -im-Mathematikunterricht-3109ae772ba6801384a2c83554f696d6
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:BildungsDialog - 
+DTSTART;TZID="UTC+02:00":20260527T143000
+DTEND;TZID="UTC+02:00":20260527T173000
+DESCRIPTION:https://www.notion.so/BildungsDialog-Vom-Whiteboard-zum-Lernra
+ um-Interaktiver-Unterricht-mit-digitalen-Tools-30e9ae772ba680fe8d8aefcebc6
+ b5804
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:brAInfood PH Wien: Unterricht vorbereiten\, gestalten & reflektier
+ en mit der Microsoft Teach App
+DTSTART;TZID="UTC+02:00":20260521T170000
+DTEND;TZID="UTC+02:00":20260521T183000
+DESCRIPTION:https://www.notion.so/brAInfood-PH-Wien-Unterricht-vorbereiten
+ -gestalten-reflektieren-mit-der-Microsoft-Teach-App-3029ae772ba680828df5eb
+ f82a1600b6
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:brAInfood PH Wien: brAInfood: KI-Agents aus der MS 365-Welt
+DTSTART;TZID="UTC+02:00":20260916T170000
+DTEND;TZID="UTC+02:00":20260916T183000
+DESCRIPTION:https://www.notion.so/brAInfood-PH-Wien-brAInfood-KI-Agents-au
+ s-der-MS-365-Welt-3029ae772ba6803c86e1d50bff9d15ee
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH STMK:  Zeit- und Selbstmanagement mit Microsoft 365-Too
+ ls
+DTSTART;TZID="UTC+01:00":20261110T133000
+DTEND;TZID="UTC+01:00":20261110T174500
+DESCRIPTION:https://www.notion.so/Webinar-PH-STMK-Zeit-und-Selbstmanagemen
+ t-mit-Microsoft-365-Tools-3029ae772ba6805fa5ecfc931f7b6d1f
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH STMK: Microsoft Copilot – Dein persönlicher KI-Assis
+ tent + weitere KI-Tools für deinen Unterricht
+DTSTART;TZID="UTC+02:00":20261022T140000
+DTEND;TZID="UTC+02:00":20261022T174500
+DESCRIPTION:https://www.notion.so/Webinar-PH-STMK-Microsoft-Copilot-Dein-p
+ ers-nlicher-KI-Assistent-weitere-KI-Tools-f-r-deinen-Un-3029ae772ba680959f
+ 5fc79f8b1b01e2
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mathe-Unterricht mit Microsoft KI-Tools
+DTSTART;TZID="UTC+02:00":20261014T143000
+DTEND;TZID="UTC+02:00":20261014T173000
+DESCRIPTION:https://www.notion.so/Mathe-Unterricht-mit-Microsoft-KI-Tools-
+ 2fd9ae772ba680ef86c6cbcba1a0e7fd
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Schulorganisation mit MS 365 - DirektorInnen-Tagung HAK OÖ
+DTSTART;TZID="UTC+02:00":20260416T090000
+DTEND;TZID="UTC+02:00":20260416T123000
+DESCRIPTION:https://www.notion.so/Schulorganisation-mit-MS-365-DirektorInn
+ en-Tagung-HAK-O-2f89ae772ba680cba7ffd42ca953496d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft Copilot - Dein persönlicher KI-Assistent für den Mathe
+ -Unterricht 
+DTSTART;TZID="UTC+01:00":20260310T120000
+DTEND;TZID="UTC+01:00":20260310T160000
+DESCRIPTION:https://www.notion.so/Microsoft-Copilot-Dein-pers-nlicher-KI-A
+ ssistent-f-r-den-Mathe-Unterricht-2ee9ae772ba680d88f15cea34fcba5c0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar HAK Krems - Microsoft Agents
+DTSTART;TZID="UTC+01:00":20260127T153000
+DTEND;TZID="UTC+01:00":20260127T170000
+DESCRIPTION:https://www.notion.so/Webinar-HAK-Krems-Microsoft-Agents-2ea9a
+ e772ba6807ba59dc50faff34ea6
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar: „KI in der HAK Praxis – Unterricht\, der KI-Kompetenz
+ en baut“
+DTSTART;TZID="UTC+02:00":20261008T140000
+DTEND;TZID="UTC+02:00":20261008T174500
+DESCRIPTION:https://www.notion.so/Webinar-KI-in-der-HAK-Praxis-Unterricht-
+ der-KI-Kompetenzen-baut-2e79ae772ba680898e0ee11c2980c4cf
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Backstage Access - Erfahrungen aus 300+ #kurtrocks Webi
+ naren
+DTSTART;TZID="UTC+01:00":20260203T163000
+DTEND;TZID="UTC+01:00":20260203T173000
+DESCRIPTION:https://www.notion.so/kurtrocks-Backstage-Access-Erfahrungen-a
+ us-300-kurtrocks-Webinaren-2da9ae772ba680779dacef1522813464
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SCHILF Mittelschule Wolfsegg
+DTSTART;TZID="UTC+01:00":20260304T133000
+DTEND;TZID="UTC+01:00":20260304T163000
+DESCRIPTION:https://www.notion.so/SCHILF-Mittelschule-Wolfsegg-2d49ae772ba
+ 680cca26ee603ac7a2431
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Schüler-Workshop HAK Braunau - 4B
+DTSTART;TZID="UTC+01:00":20260107T114500
+DTEND;TZID="UTC+01:00":20260107T131500
+DESCRIPTION:https://www.notion.so/KI-Sch-ler-Workshop-HAK-Braunau-4B-2d09a
+ e772ba68027bb97fc665b3fa340
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Community Q&A
+DTSTART;TZID="UTC+02:00":20260921T150000
+DTEND;TZID="UTC+02:00":20260921T160000
+DESCRIPTION:https://www.notion.so/kurtrocks-Community-Q-A-b873d76961314e2d
+ ace4e36a9585e2e4
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Community Q&A
+DTSTART;TZID="UTC+02:00":20260817T150000
+DTEND;TZID="UTC+02:00":20260817T160000
+DESCRIPTION:https://www.notion.so/kurtrocks-Community-Q-A-f9c6a8ca75094581
+ b6f186863d803055
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Community Q&A
+DTSTART;TZID="UTC+02:00":20260713T150000
+DTEND;TZID="UTC+02:00":20260713T160000
+DESCRIPTION:https://www.notion.so/kurtrocks-Community-Q-A-0796719f7fca4471
+ 83fcca7c422567e4
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Community Q&A
+DTSTART;TZID="UTC+01:00":20260224T150000
+DTEND;TZID="UTC+01:00":20260224T160000
+DESCRIPTION:https://www.notion.so/kurtrocks-Community-Q-A-cc0912a82f174ea7
+ bfad9e3a45a4197f
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:#kurtrocks Community Q&A
+DTSTART;TZID="UTC+01:00":20260126T160000
+DTEND;TZID="UTC+01:00":20260126T164500
+DESCRIPTION:https://www.notion.so/kurtrocks-Community-Q-A-2cc9ae772ba6803b
+ 9f95c518455223bc
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH OÖ - KI-Lernwerkzeuge aus dem Hause Microsoft für den
+  Mathematik-Unterricht
+DTSTART;TZID="UTC+01:00":20270225T140000
+DTEND;TZID="UTC+01:00":20270225T181500
+DESCRIPTION:https://www.notion.so/Webinar-PH-O-KI-Lernwerkzeuge-aus-dem-Ha
+ use-Microsoft-f-r-den-Mathematik-Unterricht-2cb9ae772ba6808dbdcbebbdf452b3
+ 58
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH OÖ: KI im und für den Mathematik-Unterricht
+DTSTART;TZID="UTC+01:00":20270309T140000
+DTEND;TZID="UTC+01:00":20270309T173000
+DESCRIPTION:https://www.notion.so/Webinar-PH-O-KI-im-und-f-r-den-Mathemati
+ k-Unterricht-2cb9ae772ba680e280f4fca03ee191a6
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:PH OÖ Webinar - MS Teams für den Mathematik-Unterricht einsetzen
+DTSTART;TZID="UTC+01:00":20270302T140000
+DTEND;TZID="UTC+01:00":20270302T173000
+DESCRIPTION:https://www.notion.so/PH-O-Webinar-MS-Teams-f-r-den-Mathematik
+ -Unterricht-einsetzen-2cb9ae772ba680128d18c426e89349d9
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:PH OÖ Webinar - MS Teams für den Mathematik-Unterricht einsetzen
+DTSTART;TZID="UTC+02:00":20261007T140000
+DTEND;TZID="UTC+02:00":20261007T173000
+DESCRIPTION:https://www.notion.so/PH-O-Webinar-MS-Teams-f-r-den-Mathematik
+ -Unterricht-einsetzen-2cb9ae772ba680b7a6dcfb6441ba4928
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Webinar PH OÖ: KI im und für den Mathematik-Unterricht
+DTSTART;TZID="UTC+02:00":20261015T140000
+DTEND;TZID="UTC+02:00":20261015T173000
+DESCRIPTION:https://www.notion.so/Webinar-PH-O-KI-im-und-f-r-den-Mathemati
+ k-Unterricht-2cb9ae772ba68000a0abe53e527f22e5
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH OÖ - KI-Lernwerkzeuge aus dem Hause Microsoft für den
+  Mathematik-Unterricht
+DTSTART;TZID="UTC+01:00":20261104T140000
+DTEND;TZID="UTC+01:00":20261104T181500
+DESCRIPTION:https://www.notion.so/Webinar-PH-O-KI-Lernwerkzeuge-aus-dem-Ha
+ use-Microsoft-f-r-den-Mathematik-Unterricht-2cb9ae772ba680b6af28ec062e6ebd
+ 50
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:ARGE BAfEP-Webinar: Stiftbasierte Geräte im Mathematik-Unterricht
+DTSTART;TZID="UTC+02:00":20261020T134500
+DTEND;TZID="UTC+02:00":20261020T180000
+DESCRIPTION:https://www.notion.so/ARGE-BAfEP-Webinar-Stiftbasierte-Ger-te-
+ im-Mathematik-Unterricht-2cb9ae772ba6806eb308faf91d8ada4b
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRWKS: „Einführung künstliche Intelligenz und LLMs“
+DTSTART;TZID="UTC+02:00":20260916T090000
+DTEND;TZID="UTC+02:00":20260916T120000
+DESCRIPTION:https://www.notion.so/Webinar-WRWKS-Einf-hrung-k-nstliche-Inte
+ lligenz-und-LLMs-2c79ae772ba680789c93f140000ce3ba
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRWKS "Mehr als Prompts: Effektive Interaktion mit Copilot
+ "
+DTSTART;TZID="UTC+02:00":20261023T090000
+DTEND;TZID="UTC+02:00":20261023T110000
+DESCRIPTION:https://www.notion.so/Webinar-WRWKS-Mehr-als-Prompts-Effektive
+ -Interaktion-mit-Copilot-2c79ae772ba6805c9b7bc0cdc4d3ed33
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRKWS - Einführung in das Arbeiten mit MS Copilot
+DTSTART;TZID="UTC+02:00":20261013T090000
+DTEND;TZID="UTC+02:00":20261013T130000
+DESCRIPTION:https://www.notion.so/Webinar-WRKWS-Einf-hrung-in-das-Arbeiten
+ -mit-MS-Copilot-2c79ae772ba68021a45dde800c113e36
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRWKS: „Einführung künstliche Intelligenz und LLMs“
+DTSTART;TZID="UTC+01:00":20260302T090000
+DTEND;TZID="UTC+01:00":20260302T130000
+DESCRIPTION:https://www.notion.so/Webinar-WRWKS-Einf-hrung-k-nstliche-Inte
+ lligenz-und-LLMs-2c79ae772ba680c79145fd2b2b64d079
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRKWS - Einführung in das Arbeiten mit MS Copilot
+DTSTART;TZID="UTC+02:00":20260420T090000
+DTEND;TZID="UTC+02:00":20260420T130000
+DESCRIPTION:https://www.notion.so/Webinar-WRKWS-Einf-hrung-in-das-Arbeiten
+ -mit-MS-Copilot-2c79ae772ba680ae843cecf678013319
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRWKS "Mehr als Prompts: Effektive Interaktion mit Copilot
+ "
+DTSTART;TZID="UTC+02:00":20260415T090000
+DTEND;TZID="UTC+02:00":20260415T110000
+DESCRIPTION:https://www.notion.so/Webinar-WRWKS-Mehr-als-Prompts-Effektive
+ -Interaktion-mit-Copilot-2c79ae772ba68023a724c83f74ef4d29
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar WRKS: „MS 365 für die eigene Organisation effizient nut
+ zen“
+DTSTART;TZID="UTC+02:00":20260528T090000
+DTEND;TZID="UTC+02:00":20260528T130000
+DESCRIPTION:https://www.notion.so/Webinar-WRKS-MS-365-f-r-die-eigene-Organ
+ isation-effizient-nutzen-2c79ae772ba680f7b465fb2145c06a87
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar BBW: OneNote für Fortgeschrittene - mehr als nur ein Noti
+ zbuch
+DTSTART;TZID="UTC+02:00":20261012T090000
+DTEND;TZID="UTC+02:00":20261012T110000
+DESCRIPTION:https://www.notion.so/Webinar-BBW-OneNote-f-r-Fortgeschrittene
+ -mehr-als-nur-ein-Notizbuch-098f0cce8eb44fbb97ec5b5e7707540d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar BFZ: OneNote für Fortgeschrittene - mehr als nur ein Noti
+ zbuch
+DTSTART;TZID="UTC+02:00":20260428T090000
+DTEND;TZID="UTC+02:00":20260428T110000
+DESCRIPTION:https://www.notion.so/Webinar-BFZ-OneNote-f-r-Fortgeschrittene
+ -mehr-als-nur-ein-Notizbuch-fa4db84e603c41c5a540e5cbc94e5947
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar BBW: OneNote - eine Einführung in das "lila Universum"
+DTSTART;TZID="UTC+02:00":20261007T090000
+DTEND;TZID="UTC+02:00":20261007T110000
+DESCRIPTION:https://www.notion.so/Webinar-BBW-OneNote-eine-Einf-hrung-in-d
+ as-lila-Universum-b0600ce743544840b500dc2a810fa7cc
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar BFZ: OneNote - eine Einführung in das "lila Universum"
+DTSTART;TZID="UTC+02:00":20260413T090000
+DTEND;TZID="UTC+02:00":20260413T110000
+DESCRIPTION:https://www.notion.so/Webinar-BFZ-OneNote-eine-Einf-hrung-in-d
+ as-lila-Universum-187538ad87824d22b84a676950fc7825
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Zeit- und Selbstmanagement mit Microsoft 365-Tools
+DTSTART;TZID="UTC+01:00":20260115T090000
+DTEND;TZID="UTC+01:00":20260115T163000
+DESCRIPTION:https://www.notion.so/Zeit-und-Selbstmanagement-mit-Microsoft-
+ 365-Tools-2c69ae772ba6809ab950f424b763bf49
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Lehrer-Workshop HAK Braunau
+DTSTART;TZID="UTC+01:00":20260107T140000
+DTEND;TZID="UTC+01:00":20260107T171500
+DESCRIPTION:https://www.notion.so/KI-Lehrer-Workshop-HAK-Braunau-2c69ae772
+ ba680c9af27cd949d1e1a9f
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Schüler-Workshop HAK Braunau - 4A
+DTSTART;TZID="UTC+01:00":20260107T100000
+DTEND;TZID="UTC+01:00":20260107T113000
+DESCRIPTION:https://www.notion.so/KI-Sch-ler-Workshop-HAK-Braunau-4A-2c69a
+ e772ba680eb9e23d65f4c7a4e5d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SCHILF GYM Gmunden - KI + Copilot - Basics
+DTSTART;TZID="UTC+01:00":20260325T140000
+DTEND;TZID="UTC+01:00":20260325T170000
+DESCRIPTION:https://www.notion.so/SCHILF-GYM-Gmunden-KI-Copilot-Basics-2c0
+ 9ae772ba680e6b367face9b2916ea
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SCHILF GYM Gmunden - KI + Copilot - Level Up
+DTSTART;TZID="UTC+02:00":20260421T140000
+DTEND;TZID="UTC+02:00":20260421T170000
+DESCRIPTION:https://www.notion.so/SCHILF-GYM-Gmunden-KI-Copilot-Level-Up-2
+ c09ae772ba6800c95d6fead765c9fee
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:"Wenn KI im Klassenzimmer ankommt..."
+DTSTART;TZID="UTC+01:00":20260129T093500
+DTEND;TZID="UTC+01:00":20260129T095500
+DESCRIPTION:https://www.notion.so/Wenn-KI-im-Klassenzimmer-ankommt-2be9ae7
+ 72ba680119c80df408e14ea3a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Vom Solopreneur zum 1-Person-Team
+DTSTART;TZID="UTC+01:00":20260309T170000
+DTEND;TZID="UTC+01:00":20260309T191500
+DESCRIPTION:https://www.notion.so/Vom-Solopreneur-zum-1-Person-Team-2bd9ae
+ 772ba680949c06e24395dfa1f8
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Praxiswerkstatt für Einsteiger:innen: Einblick in Copilot
+DTSTART;TZID="UTC+01:00":20260115T163000
+DTEND;TZID="UTC+01:00":20260115T180000
+DESCRIPTION:https://www.notion.so/KI-Praxiswerkstatt-f-r-Einsteiger-innen-
+ Einblick-in-Copilot-2bc9ae772ba680949e33c4ac9ddfb36d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass LIVE Event
+DTSTART;TZID="UTC+01:00":20260210T190000
+DTEND;TZID="UTC+01:00":20260210T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-LIVE-Event-2b29ae772
+ ba6807887fce966bd116fca
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft 365 Copilot - mehr als nur ein KI-Chat
+DTSTART;TZID="UTC+02:00":20260428T160000
+DTEND;TZID="UTC+02:00":20260428T173000
+DESCRIPTION:https://www.notion.so/Microsoft-365-Copilot-mehr-als-nur-ein-K
+ I-Chat-3f55320000484d59b6a61ba115cbbb41
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft Learning Activities und Teach Module Copilot
+DTSTART;TZID="UTC+01:00":20260312T160000
+DTEND;TZID="UTC+01:00":20260312T173000
+DESCRIPTION:https://www.notion.so/Microsoft-Learning-Activities-und-Teach-
+ Module-Copilot-a24516e86f714c4d8fbafd9cc3fb3062
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar PH Wien: Microsoft Copilot Notebooks
+DTSTART;TZID="UTC+01:00":20260323T160000
+DTEND;TZID="UTC+01:00":20260323T173000
+DESCRIPTION:https://www.notion.so/Webinar-PH-Wien-Microsoft-Copilot-Notebo
+ oks-42272453fdaa4ec5ad7f4ae7b3f95012
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft “Teach” - brAInfood PH Wien
+DTSTART;TZID="UTC+01:00":20260121T170000
+DTEND;TZID="UTC+01:00":20260121T183000
+DESCRIPTION:https://www.notion.so/Microsoft-Teach-brAInfood-PH-Wien-2ae9ae
+ 772ba680f289b9d272a6ffae0e
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Führung einer digitalen Arbeitsmappe in der Oberstufe - klar\, st
+ rukturiert\, praxistauglich
+DTSTART;TZID="UTC+02:00":20260922T143000
+DTEND;TZID="UTC+02:00":20260922T180000
+DESCRIPTION:https://www.notion.so/F-hrung-einer-digitalen-Arbeitsmappe-in-
+ der-Oberstufe-klar-strukturiert-praxistauglich-2a69ae772ba680ed9bb7eb7c4f4
+ 55022
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+01:00":20261215T190000
+DTEND;TZID="UTC+01:00":20261215T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-57
+ c766bbb30b4433b58103eb752dd9ed
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+01:00":20261110T190000
+DTEND;TZID="UTC+01:00":20261110T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-21
+ c84c39a0004fe9826d98a27fc9561b
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20261013T190000
+DTEND;TZID="UTC+02:00":20261013T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-c0
+ 184408781c42ee90a700f414d58964
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260910T190000
+DTEND;TZID="UTC+02:00":20260910T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-91
+ dadc564a0f452d952896e4f9b522be
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260810T190000
+DTEND;TZID="UTC+02:00":20260810T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-5c
+ b9c1f1a96243daa6ffecf8a4a196a0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260714T190000
+DTEND;TZID="UTC+02:00":20260714T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-61
+ f1af6a0efa46089135230813f49a4d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260609T190000
+DTEND;TZID="UTC+02:00":20260609T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-04
+ 02e1e622e64a088ceb736c271d3aa7
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260512T190000
+DTEND;TZID="UTC+02:00":20260512T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-77
+ ca1f30f819406a99e418ffc5dc8c85
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+02:00":20260414T190000
+DTEND;TZID="UTC+02:00":20260414T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-7a
+ 91953c36fb476db23bf2540f7b503a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Community Meeting
+DTSTART;TZID="UTC+01:00":20260303T190000
+DTEND;TZID="UTC+01:00":20260303T200000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Community-Meeting-fa
+ cef1a14d8f40e8848abb4586e61b93
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft KI-Tools - Aktueller Stand und Implikationen für den IT
+ -Unterricht und die Praxis
+DTSTART;TZID="UTC+01:00":20251124T140000
+DTEND;TZID="UTC+01:00":20251124T171500
+DESCRIPTION:https://www.notion.so/Microsoft-KI-Tools-Aktueller-Stand-und-I
+ mplikationen-f-r-den-IT-Unterricht-und-die-Praxis-2a49ae772ba68053b380da0d
+ 54eb9400
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote für Anfänger - Meinen Mathe-Unterricht digital vorbereit
+ en\, durchführen & protokollieren
+DTSTART;TZID="UTC+01:00":20251104T140000
+DTEND;TZID="UTC+01:00":20251104T180000
+DESCRIPTION:https://www.notion.so/OneNote-f-r-Anf-nger-Meinen-Mathe-Unterr
+ icht-digital-vorbereiten-durchf-hren-protokollieren-29e9ae772ba680009c0fc6
+ bee962c32d
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MS365-Tools für Schul-Administratoren
+DTSTART;TZID="UTC+01:00":20251120T080000
+DTEND;TZID="UTC+01:00":20251120T100000
+DESCRIPTION:https://www.notion.so/MS365-Tools-f-r-Schul-Administratoren-29
+ e9ae772ba680e3b2b1ee4f47e1d9d0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft-EDU-Tools: Aktuelle Entwicklungen
+DTSTART;TZID="UTC+01:00":20260311T140000
+DTEND;TZID="UTC+01:00":20260311T171500
+DESCRIPTION:https://www.notion.so/Microsoft-EDU-Tools-Aktuelle-Entwicklung
+ en-29c9ae772ba6807fa17eea04a267b618
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SCHILF MS Haiming: Microsoft KI-Tools für den Unterricht
+DTSTART;TZID="UTC+01:00":20251105T140000
+DTEND;TZID="UTC+01:00":20251105T170000
+DESCRIPTION:https://www.notion.so/SCHILF-MS-Haiming-Microsoft-KI-Tools-f-r
+ -den-Unterricht-2979ae772ba6804d9b2ecb21888ae8bb
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:PH Wien BrAInfood: Microsoft Learning Tools – KI-gestützte Lern
+ begleitung für den Unterricht
+DTSTART;TZID="UTC+01:00":20251218T170000
+DTEND;TZID="UTC+01:00":20251218T183000
+DESCRIPTION:https://www.notion.so/PH-Wien-BrAInfood-Microsoft-Learning-Too
+ ls-KI-gest-tzte-Lernbegleitung-f-r-den-Unterricht-2969ae772ba680f2a643f8ff
+ 593a21db
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Einführung in das Arbeiten mit Microsoft Copilot
+DTSTART;TZID="UTC+02:00":20251016T090000
+DTEND;TZID="UTC+02:00":20251016T130000
+DESCRIPTION:https://www.notion.so/Einf-hrung-in-das-Arbeiten-mit-Microsoft
+ -Copilot-2889ae772ba6801c8e3be683ef369f28
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Einführung in das Arbeiten mit Microsoft Copilot
+DTSTART;TZID="UTC+02:00":20251002T090000
+DTEND;TZID="UTC+02:00":20251002T130000
+DESCRIPTION:https://www.notion.so/Einf-hrung-in-das-Arbeiten-mit-Microsoft
+ -Copilot-2739ae772ba680bba9efde4cbf95f83c
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Einführung in das Arbeiten mit Microsoft Copilot
+DTSTART;TZID="UTC+02:00":20250923T090000
+DTEND;TZID="UTC+02:00":20250923T130000
+DESCRIPTION:https://www.notion.so/Einf-hrung-in-das-Arbeiten-mit-Microsoft
+ -Copilot-2739ae772ba680f2815be1e2e99152ff
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar BG/BRG Kufstein: Einsatz von MS Copilot
+DTSTART;TZID="UTC+02:00":20250925T140000
+DTEND;TZID="UTC+02:00":20250925T163000
+DESCRIPTION:https://www.notion.so/Webinar-BG-BRG-Kufstein-Einsatz-von-MS-C
+ opilot-26c9ae772ba68059a61edfa5eafe9e04
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Planer - Launch Event
+DTSTART;TZID="UTC+02:00":20250624T190000
+DTEND;TZID="UTC+02:00":20250624T210000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Planer-Launch-Event-
+ 21b9ae772ba680eb8b77d6524423112b
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote Masterclass Award Ceremony
+DTSTART;TZID="UTC+01:00":20260113T190000
+DTEND;TZID="UTC+01:00":20260113T210000
+DESCRIPTION:https://www.notion.so/OneNote-Masterclass-Award-Ceremony-20c9a
+ e772ba6808498b4e2ef7f83785a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KI-Tools aus dem Microsoft EDU-Universum 
+DTSTART;TZID="UTC+01:00":20251118T160000
+DTEND;TZID="UTC+01:00":20251118T173000
+DESCRIPTION:https://www.notion.so/KI-Tools-aus-dem-Microsoft-EDU-Universum
+ -2019ae772ba680dcbfd2f650f721549a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Microsoft Copilot\, dein KI-Lehr-Assistent
+DTSTART;TZID="UTC+02:00":20251002T160000
+DTEND;TZID="UTC+02:00":20251002T173000
+DESCRIPTION:https://www.notion.so/Microsoft-Copilot-dein-KI-Lehr-Assistent
+ -2019ae772ba68039be43dfec3fd2431a
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:(Mathe-)KI-Agents aus der Microsoft 365 - Welt zum Selbermachen
+DTSTART;TZID="UTC+01:00":20260122T160000
+DTEND;TZID="UTC+01:00":20260122T173000
+DESCRIPTION:https://www.notion.so/Mathe-KI-Agents-aus-der-Microsoft-365-We
+ lt-zum-Selbermachen-2019ae772ba6802ba83fcad77bc6292c
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OneNote für Fortgeschrittene
+DTSTART;TZID="UTC+01:00":20260114T160000
+DTEND;TZID="UTC+01:00":20260114T173000
+DESCRIPTION:https://www.notion.so/OneNote-f-r-Fortgeschrittene-2019ae772ba
+ 6800ba2bef059257b8d9c
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mathematik-ARGE HAK: KI im Mathematik-Unterricht
+DTSTART;TZID="UTC+01:00":20251127T090000
+DTEND;TZID="UTC+01:00":20251127T170000
+DESCRIPTION:https://www.notion.so/Mathematik-ARGE-HAK-KI-im-Mathematik-Unt
+ erricht-2019ae772ba6802987b7dd2e38606857
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Prompt engeneering
+DTSTART;TZID="UTC+02:00":20250630T090000
+DTEND;TZID="UTC+02:00":20250630T110000
+DESCRIPTION:https://www.notion.so/Prompt-engeneering-1f89ae772ba680038028e
+ 04d1dc7049d
+END:VEVENT
+END:VCALENDAR
