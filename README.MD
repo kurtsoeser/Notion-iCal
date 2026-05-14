@@ -47,5 +47,29 @@ and see Notion.ics be generated
 ### Add it!
 Import the `Notion.ics` into your favorite calendar app and enjoy!
 
+## Abo-Feed mit GitHub Pages (HTTPS-URL)
+
+So bekommst du eine **URL**, die du in Google Kalender / Outlook etc. unter **„Per URL abonnieren“** eintragen kannst. Die Datei wird **nicht** bei jedem Kalenderabruf live von Notion gezogen, sondern von einem **geplanten GitHub Actions**-Job neu erzeugt und auf **GitHub Pages** veröffentlicht (typisch alle paar Stunden).
+
+### Voraussetzungen
+
+- Repo auf **GitHub** (öffentlich oder mit passendem Plan für private Pages).
+- In Notion: Integration wie zuvor, **Datenbank freigegeben**.
+
+### Einrichtung
+
+1. **Repository** mit diesem Code auf GitHub anlegen / pushen.
+2. Unter **Settings → Secrets and variables → Actions** zwei **Repository secrets** anlegen:
+   - `NOTION_TOKEN` – dein Notion-Integrationstoken  
+   - `DATABASE_ID` – dieselbe ID wie in `.env` lokal  
+3. **Settings → Pages**: Quelle **„Deploy from a branch“** wählen, Branch **`gh-pages`**, Ordner **`/ (root)`**.  
+   *(Der Branch wird beim ersten erfolgreichen Workflow-Lauf automatisch angelegt.)*
+4. Unter **Actions** den Workflow **„Publish Notion iCal“** einmal manuell starten (**Run workflow**), warten bis er grün ist.
+5. Deine Feed-URL (Projekt-Repository, Beispiel):  
+   `https://<DEIN-USERNAME>.github.io/<REPO-NAME>/Notion.ics`  
+   Diese URL im Kalender als **Internetkalender / Abo** eintragen.
+
+**Hinweis:** Jeder mit der URL kann die Termine abrufen – bei öffentlichem Repo/Pages ist die Kalenderdatei **öffentlich**. Token bleiben nur in GitHub Secrets.
+
 ## To-DO
 * [ ] Make Quiz and Exams All Caps

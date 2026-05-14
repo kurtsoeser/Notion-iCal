@@ -1,0 +1,40 @@
+# Baut Notion.ics und veröffentlicht sie auf GitHub Pages (stabile HTTPS-URL zum Abonnieren).
+name: Publish Notion iCal
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Alle 3 Stunden (UTC). GitHub kann geplante Läufe verzögern.
+    - cron: "15 */3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate Notion.ics
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
+        run: python main.py
+
+      - name: Prepare site
+        run: mkdir -p public && cp Notion.ics public/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
