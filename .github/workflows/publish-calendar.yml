@@ -1,18 +1,27 @@
-# Baut Notion.ics und veröffentlicht sie auf GitHub Pages (stabile HTTPS-URL zum Abonnieren).
+# Baut Notion.ics und veröffentlicht sie über die offizielle GitHub-Pages-API
+# (funktioniert mit Settings → Pages → Source: „GitHub Actions“).
 name: Publish Notion iCal
 
 on:
   workflow_dispatch:
   schedule:
-    # Alle 3 Stunden (UTC). GitHub kann geplante Läufe verzögern.
     - cron: "15 */3 * * *"
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -32,9 +41,11 @@ jobs:
       - name: Prepare site
         run: mkdir -p public && cp Notion.ics public/
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -62,9 +62,9 @@ So bekommst du eine **URL**, die du in Google Kalender / Outlook etc. unter **�
 2. Unter **Settings → Secrets and variables → Actions** zwei **Repository secrets** anlegen:
    - `NOTION_TOKEN` – dein Notion-Integrationstoken  
    - `DATABASE_ID` – dieselbe ID wie in `.env` lokal  
-3. **Settings → Pages**: Quelle **„Deploy from a branch“** wählen, Branch **`gh-pages`**, Ordner **`/ (root)`**.  
-   *(Der Branch wird beim ersten erfolgreichen Workflow-Lauf automatisch angelegt.)*
-4. Unter **Actions** den Workflow **„Publish Notion iCal“** einmal manuell starten (**Run workflow**), warten bis er grün ist.
+3. **Settings → Pages** → **Build and deployment** → Quelle **„GitHub Actions“** (nicht „Deploy from a branch“), sofern noch nicht gesetzt.  
+   *(Der Workflow unten nutzt `deploy-pages`; bei nur „gh-pages“-Branch ohne diese API bleibt die URL oft leer / 404.)*
+4. Unter **Actions** den Workflow **„Publish Notion iCal“** einmal manuell starten (**Run workflow**). Beim ersten Mal kann GitHub eine **Freigabe** für die Umgebung `github-pages` verlangen – in der Lauf-Ansicht auf **Review deployments** / Genehmigen klicken.
 5. Deine Feed-URL (Projekt-Repository, Beispiel):  
    `https://<DEIN-USERNAME>.github.io/<REPO-NAME>/Notion.ics`  
    Diese URL im Kalender als **Internetkalender / Abo** eintragen.
