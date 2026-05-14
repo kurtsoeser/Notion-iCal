@@ -1,5 +1,5 @@
 import requests
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from icalendar import Calendar, Event
 
 
@@ -19,6 +19,13 @@ class NotionClient:
             return datetime.strptime(s[:10], "%Y-%m-%d").date()
         normalized = s.replace("Z", "+00:00")
         return datetime.fromisoformat(normalized)
+
+    @staticmethod
+    def _to_utc(dt: datetime) -> datetime:
+        """Outlook braucht echte UTC-Zeiten (…Z), nicht TZID ohne VTIMEZONE."""
+        if dt.tzinfo is None:
+            return dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
 
     def get_database(self, database_id):
         url = f"https://api.notion.com/v1/databases/{database_id}/query"
@@ -81,6 +88,11 @@ class NotionClient:
         self.export_ical(events)
 
     def export_ical(self, items):
+        self.cal = Calendar()
+        self.cal.add("prodid", "-//Notion-iCal//DE")
+        self.cal.add("version", "2.0")
+        self.cal.add("calscale", "GREGORIAN")
+
         for item in items:
             event = Event()
             event.add("summary", item["title"])
@@ -89,9 +101,9 @@ class NotionClient:
 
             st, en = item["start"], item.get("end")
             if isinstance(st, datetime):
-                event.add("dtstart", st)
+                event.add("dtstart", self._to_utc(st))
                 if en and isinstance(en, datetime):
-                    event.add("dtend", en)
+                    event.add("dtend", self._to_utc(en))
             elif isinstance(st, date):
                 event.add("dtstart", st)
                 if en and isinstance(en, date):
