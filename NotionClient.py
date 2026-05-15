@@ -1,3 +1,4 @@
+import os
 import requests
 from datetime import date, datetime, timezone
 from icalendar import Calendar, Event, vText
@@ -90,31 +91,56 @@ class NotionClient:
             parts.append(f"Meeting-Link\n{meeting_link}")
         return "\n\n".join(parts)
 
-    def get_database(self, database_id):
+    def _fetch_all_database_items(self, database_id):
+        """Notion liefert max. 100 Einträge pro Request – alle Seiten laden."""
         url = f"https://api.notion.com/v1/databases/{database_id}/query"
         headers = {
             "Authorization": f"Bearer {self.TOKEN}",
             "Notion-Version": "2022-06-28",
             "Content-Type": "application/json",
         }
-        payload = {
-            "sorts": [
-                {
-                    "direction": "ascending",
-                    "timestamp": "last_edited_time",
-                }
-            ]
+        base_payload = {
+            "page_size": 100,
+            "sorts": [{"property": "Datum", "direction": "ascending"}],
         }
+        items = []
+        cursor = None
+        while True:
+            payload = dict(base_payload)
+            if cursor:
+                payload["start_cursor"] = cursor
+            resp = requests.post(url, headers=headers, json=payload)
+            body = resp.json()
+            if resp.status_code != 200 or "results" not in body:
+                raise RuntimeError(
+                    f"Notion API antwortete mit {resp.status_code}: {body}"
+                )
+            items.extend(body["results"])
+            if not body.get("has_more"):
+                break
+            cursor = body.get("next_cursor")
+        return items
+
+    @staticmethod
+    def _is_future(start_v: date | datetime) -> bool:
+        now = datetime.now(timezone.utc)
+        if isinstance(start_v, datetime):
+            return NotionClient._to_utc(start_v) >= now
+        return start_v >= now.date()
+
+    def get_database(self, database_id, only_future: bool | None = None):
+        if only_future is None:
+            only_future = os.getenv("ONLY_FUTURE", "").lower() in (
+                "1",
+                "true",
+                "yes",
+            )
 
         events = []
+        skipped_no_date = 0
+        skipped_past = 0
 
-        resp = requests.post(url, headers=headers, json=payload)
-        body = resp.json()
-        if resp.status_code != 200 or "results" not in body:
-            raise RuntimeError(
-                f"Notion API antwortete mit {resp.status_code}: {body}"
-            )
-        items = body["results"]
+        items = self._fetch_all_database_items(database_id)
         for item in items:
             props = item["properties"]
             title = self._rich_text_plain(props.get("Titel")) or "Ohne Titel"
@@ -128,9 +154,13 @@ class NotionClient:
 
             date_obj = (props.get("Datum") or {}).get("date")
             if not date_obj or not date_obj.get("start"):
+                skipped_no_date += 1
                 continue
 
             start_v = self._parse_notion_date_value(date_obj["start"])
+            if only_future and not self._is_future(start_v):
+                skipped_past += 1
+                continue
             end_raw = date_obj.get("end")
             end_v = (
                 self._parse_notion_date_value(end_raw) if end_raw else None
@@ -158,6 +188,13 @@ class NotionClient:
             )
 
         self.export_ical(events)
+        mode = "nur zukünftige" if only_future else "alle mit Datum"
+        print(
+            f"Notion: {len(items)} Einträge gelesen, "
+            f"{len(events)} exportiert ({mode}), "
+            f"{skipped_no_date} ohne Datum übersprungen"
+            + (f", {skipped_past} vergangene übersprungen" if only_future else "")
+        )
 
     def export_ical(self, items):
         self.cal = Calendar()
