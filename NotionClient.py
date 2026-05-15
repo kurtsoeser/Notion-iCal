@@ -1,3 +1,4 @@
+import html
 import os
 import requests
 from datetime import date, datetime, timezone
@@ -118,7 +119,72 @@ class NotionClient:
         return f"── {heading} ──\n{body}"
 
     @staticmethod
-    def _build_description(
+    def _html_escape(text: str) -> str:
+        return html.escape(text or "", quote=True)
+
+    @staticmethod
+    def _html_href(url: str) -> str:
+        return (url or "").replace('"', "%22").replace("\n", "").replace("\r", "")
+
+    @staticmethod
+    def _html_link(url: str, label: str) -> str:
+        if not url:
+            return ""
+        return (
+            f'<a href="{NotionClient._html_href(url)}">'
+            f"{NotionClient._html_escape(label)}</a>"
+        )
+
+    @staticmethod
+    def _html_row(label: str, cell_html: str) -> str:
+        return (
+            "<tr>"
+            f"<td><b>{NotionClient._html_escape(label)}</b></td>"
+            f"<td>{cell_html}</td>"
+            "</tr>"
+        )
+
+    @staticmethod
+    def _build_description_plain(
+        title: str,
+        beschreibung: str,
+        page_url: str,
+        meeting_link: str,
+        veranstaltungs_links: list[tuple[str, str]],
+        aufzeichnung_links: list[tuple[str, str]],
+    ) -> str:
+        """Fallback-Text, falls ein Kalender X-ALT-DESC nicht rendert."""
+        sections = []
+        if beschreibung:
+            sections.append(
+                NotionClient._desc_section("Beschreibung", beschreibung)
+            )
+        if page_url:
+            sections.append(
+                NotionClient._desc_section("Infos", f"{title}\n{page_url}")
+            )
+            sections.append(
+                NotionClient._desc_section(
+                    "In Notion öffnen",
+                    NotionClient._notion_deep_link(page_url),
+                )
+            )
+        if meeting_link:
+            sections.append(
+                NotionClient._desc_section("Meeting-Link", meeting_link)
+            )
+        for label, url in veranstaltungs_links:
+            sections.append(
+                NotionClient._desc_section("Veranstaltungslink", f"{label}\n{url}")
+            )
+        for label, url in aufzeichnung_links:
+            sections.append(
+                NotionClient._desc_section("Aufzeichnung", f"{label}\n{url}")
+            )
+        return "\n\n".join(s for s in sections if s)
+
+    @staticmethod
+    def _build_description_html(
         title: str,
         beschreibung: str,
         page_url: str,
@@ -127,47 +193,61 @@ class NotionClient:
         aufzeichnung_links: list[tuple[str, str]],
     ) -> str:
         """
-        Klartext-Beschreibung für Outlook-Internetkalender.
-        (Kein HTML/Base64 in X-ALT-DESC – Outlook zeigt das sonst als Müllzeichen.)
+        HTML-Tabelle für Outlook (X-ALT-DESC).
+        Kein Base64, keine Inline-Styles mit Semikolons (sonst kaputt im ICS).
         """
-        sections = []
-
+        rows = []
         if beschreibung:
-            sections.append(
-                NotionClient._desc_section("Beschreibung", beschreibung)
-            )
+            body = NotionClient._html_escape(beschreibung).replace("\n", "<br>")
+            rows.append(NotionClient._html_row("Beschreibung", body))
 
         if page_url:
-            sections.append(
-                NotionClient._desc_section(
-                    "Infos", f"{title}\n{page_url}"
+            rows.append(
+                NotionClient._html_row(
+                    "Infos", NotionClient._html_link(page_url, title)
                 )
             )
-            sections.append(
-                NotionClient._desc_section(
+            rows.append(
+                NotionClient._html_row(
                     "In Notion öffnen",
-                    NotionClient._notion_deep_link(page_url),
+                    NotionClient._html_link(
+                        NotionClient._notion_deep_link(page_url),
+                        "in Notion öffnen",
+                    ),
                 )
             )
 
         if meeting_link:
-            sections.append(
-                NotionClient._desc_section("Meeting-Link", meeting_link)
-            )
-
-        for label, url in veranstaltungs_links:
-            sections.append(
-                NotionClient._desc_section(
-                    "Veranstaltungslink", f"{label}\n{url}"
+            rows.append(
+                NotionClient._html_row(
+                    "Meeting-Link",
+                    NotionClient._html_link(
+                        meeting_link, "Teams / Meeting beitreten"
+                    ),
                 )
             )
 
-        for label, url in aufzeichnung_links:
-            sections.append(
-                NotionClient._desc_section("Aufzeichnung", f"{label}\n{url}")
+        if veranstaltungs_links:
+            links = "<br>".join(
+                NotionClient._html_link(u, lbl) for lbl, u in veranstaltungs_links
             )
+            rows.append(NotionClient._html_row("Veranstaltungslink", links))
 
-        return "\n\n".join(s for s in sections if s)
+        if aufzeichnung_links:
+            links = "<br>".join(
+                NotionClient._html_link(u, lbl) for lbl, u in aufzeichnung_links
+            )
+            rows.append(NotionClient._html_row("Aufzeichnung", links))
+
+        if not rows:
+            return ""
+
+        table = (
+            '<table border="1" cellpadding="4" cellspacing="0">'
+            + "".join(rows)
+            + "</table>"
+        )
+        return f"<html><body>{table}</body></html>"
 
     def _fetch_all_database_items(self, database_id):
         """Notion liefert max. 100 Einträge pro Request – alle Seiten laden."""
@@ -318,9 +398,15 @@ class NotionClient:
                 item.get("veranstaltungs_links") or [],
                 item.get("aufzeichnung_links") or [],
             )
-            description = self._build_description(*desc_args)
-            if description:
-                event.add("description", description)
+            plain_desc = self._build_description_plain(*desc_args)
+            html_desc = self._build_description_html(*desc_args)
+            if plain_desc:
+                event.add("description", plain_desc)
+            if html_desc:
+                alt = vText(html_desc)
+                alt.params["FMTTYPE"] = "text/html"
+                alt.params["CHARSET"] = "UTF-8"
+                event.add("x-alt-desc", alt)
 
             st, en = item["start"], item.get("end")
             if isinstance(st, datetime):
