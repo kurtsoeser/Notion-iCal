@@ -39,6 +39,57 @@ class NotionClient:
             return None
         return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
+    @staticmethod
+    def _url_from_prop(prop: dict | None) -> str:
+        if not prop:
+            return ""
+        url = prop.get("url")
+        return (url or "").strip()
+
+    @staticmethod
+    def _location_from_prop(prop: dict | None) -> str:
+        if not prop:
+            return ""
+        prop_type = prop.get("type")
+        if prop_type == "rich_text":
+            return NotionClient._rich_text_plain(prop)
+        if prop_type == "select":
+            sel = prop.get("select")
+            return (sel.get("name") or "").strip() if sel else ""
+        if prop_type == "place":
+            place = prop.get("place") or {}
+            return (place.get("name") or "").strip()
+        return NotionClient._rich_text_plain(prop)
+
+    @staticmethod
+    def _notion_deep_link(https_url: str) -> str:
+        if not https_url:
+            return ""
+        if https_url.startswith("https://"):
+            return "notion://" + https_url[len("https://") :]
+        if https_url.startswith("http://"):
+            return "notion://" + https_url[len("http://") :]
+        return https_url
+
+    @staticmethod
+    def _build_description(
+        title: str,
+        beschreibung: str,
+        page_url: str,
+        meeting_link: str,
+    ) -> str:
+        parts = []
+        if beschreibung:
+            parts.append(beschreibung)
+        if page_url:
+            parts.append(f"{title}\n{page_url}")
+            parts.append(
+                f"in Notion öffnen\n{NotionClient._notion_deep_link(page_url)}"
+            )
+        if meeting_link:
+            parts.append(f"Meeting-Link\n{meeting_link}")
+        return "\n\n".join(parts)
+
     def get_database(self, database_id):
         url = f"https://api.notion.com/v1/databases/{database_id}/query"
         headers = {
@@ -72,6 +123,8 @@ class NotionClient:
             kategorie = sel.get("name") if sel else ""
 
             beschreibung = self._rich_text_plain(props.get("Beschreibung"))
+            meeting_link = self._url_from_prop(props.get("Meeting Link"))
+            ort = self._location_from_prop(props.get("Ort"))
 
             date_obj = (props.get("Datum") or {}).get("date")
             if not date_obj or not date_obj.get("start"):
@@ -91,10 +144,13 @@ class NotionClient:
                 {
                     "uid": f"{page_id}@notion.so",
                     "title": summary,
+                    "plain_title": title,
                     "start": start_v,
                     "end": end_v,
                     "url": page_url,
                     "description": beschreibung,
+                    "meeting_link": meeting_link,
+                    "location": ort or "online",
                     "last_modified": self._parse_iso_datetime(
                         item.get("last_edited_time")
                     ),
@@ -128,13 +184,16 @@ class NotionClient:
             if page_url:
                 event.add("url", vText(page_url))
 
-            desc_parts = []
-            if item.get("description"):
-                desc_parts.append(item["description"])
-            if page_url:
-                desc_parts.append(f"Notion: {page_url}")
-            if desc_parts:
-                event.add("description", "\n\n".join(desc_parts))
+            event.add("location", item.get("location") or "online")
+
+            description = self._build_description(
+                item.get("plain_title") or item["title"],
+                item.get("description") or "",
+                page_url,
+                item.get("meeting_link") or "",
+            )
+            if description:
+                event.add("description", description)
 
             st, en = item["start"], item.get("end")
             if isinstance(st, datetime):
