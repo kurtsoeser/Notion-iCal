@@ -1,3 +1,4 @@
+import base64
 import html
 import os
 import requests
@@ -65,32 +66,54 @@ class NotionClient:
 
     @staticmethod
     def _notion_deep_link(https_url: str) -> str:
+        """https://www.notion.so/… → notion://www.notion.so/… (Notion-Desktop)."""
         if not https_url:
             return ""
-        if https_url.startswith("https://"):
-            return "notion://" + https_url[len("https://") :]
-        if https_url.startswith("http://"):
-            return "notion://" + https_url[len("http://") :]
-        return https_url
+        for prefix in ("https://", "http://"):
+            if https_url.startswith(prefix):
+                return "notion://" + https_url[len(prefix) :]
+        if https_url.startswith("notion://"):
+            return https_url
+        return f"notion://{https_url.lstrip('/')}"
 
     @staticmethod
-    def _links_from_prop(prop: dict | None) -> list[tuple[str, str]]:
-        """URL oder rich_text mit Hyperlinks → [(Anzeigetext, URL), …]."""
+    def _safe_href(url: str) -> str:
+        return (url or "").replace('"', "%22").replace("\n", "").replace("\r", "")
+
+    @staticmethod
+    def _links_from_prop(
+        prop: dict | None, default_label: str = "Link öffnen"
+    ) -> list[tuple[str, str]]:
+        """URL, rich_text oder files (externer Link) → [(Anzeigetext, URL), …]."""
         if not prop:
             return []
         prop_type = prop.get("type")
         if prop_type == "url":
             url = (prop.get("url") or "").strip()
             if url:
-                return [("Link", url)]
-        links: list[tuple[str, str]] = []
+                return [(default_label, url)]
+        if prop_type == "files":
+            links: list[tuple[str, str]] = []
+            for entry in prop.get("files") or []:
+                url = ""
+                name = (entry.get("name") or "").strip()
+                if entry.get("type") == "external":
+                    url = (entry.get("external") or {}).get("url", "").strip()
+                elif entry.get("type") == "file":
+                    url = (entry.get("file") or {}).get("url", "").strip()
+                if not url:
+                    continue
+                label = default_label if name.startswith("http") else (name or default_label)
+                links.append((label, url))
+            return links
+        links = []
         for chunk in prop.get("rich_text") or []:
             text = (chunk.get("plain_text") or "").strip()
             href = chunk.get("href")
             if not href:
                 href = (chunk.get("text", {}).get("link") or {}).get("url")
             if href:
-                links.append((text or href, href.strip()))
+                links.append((text or default_label, href.strip()))
         return links
 
     @staticmethod
@@ -103,7 +126,7 @@ class NotionClient:
             return ""
         title_attr = f' title="{NotionClient._html_escape(title)}"' if title else ""
         return (
-            f'<a href="{NotionClient._html_escape(url)}" target="_blank"'
+            f'<a href="{NotionClient._safe_href(url)}" target="_blank"'
             f'{title_attr}>{NotionClient._html_escape(label)}</a>'
         )
 
@@ -159,7 +182,7 @@ class NotionClient:
         if page_url:
             rows.append(
                 NotionClient._html_table_row(
-                    "Notion",
+                    "Infos",
                     NotionClient._html_link(page_url, title, title),
                 )
             )
@@ -168,7 +191,9 @@ class NotionClient:
                 NotionClient._html_table_row(
                     "In Notion öffnen",
                     NotionClient._html_link(
-                        notion_app, "in Notion öffnen", "In der Notion-App öffnen"
+                        notion_app,
+                        "in Notion öffnen",
+                        "In der Notion-App öffnen",
                     ),
                 )
             )
@@ -274,9 +299,11 @@ class NotionClient:
             beschreibung = self._rich_text_plain(props.get("Beschreibung"))
             meeting_link = self._url_from_prop(props.get("Meeting Link"))
             veranstaltungs_links = self._links_from_prop(
-                props.get("Veranstaltungslink")
+                props.get("Veranstaltungslink"), "Veranstaltung öffnen"
             )
-            aufzeichnung_links = self._links_from_prop(props.get("Aufzeichnung"))
+            aufzeichnung_links = self._links_from_prop(
+                props.get("Aufzeichnung"), "Aufzeichnung ansehen"
+            )
             ort = self._location_from_prop(props.get("Ort"))
 
             date_obj = (props.get("Datum") or {}).get("date")
@@ -366,9 +393,10 @@ class NotionClient:
             if plain_desc:
                 event.add("description", plain_desc)
             if html_desc:
-                alt = vText(html_desc)
+                encoded = base64.b64encode(html_desc.encode("utf-8")).decode("ascii")
+                alt = vText(encoded)
                 alt.params["FMTTYPE"] = "text/html"
-                alt.params["CHARSET"] = "UTF-8"
+                alt.params["ENCODING"] = "BASE64"
                 event.add("x-alt-desc", alt)
 
             st, en = item["start"], item.get("end")
