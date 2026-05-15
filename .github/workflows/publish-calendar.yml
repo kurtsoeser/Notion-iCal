@@ -39,7 +39,11 @@ jobs:
         run: python main.py
 
       - name: Prepare site
-        run: mkdir -p public && cp Notion.ics public/
+        run: |
+          mkdir -p public
+          cp Notion.ics public/Notion.ics
+          cp site/go.html public/go.html
+          ls -la public/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
