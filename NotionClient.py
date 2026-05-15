@@ -1,6 +1,7 @@
 import html
 import os
 import requests
+from urllib.parse import quote
 from datetime import date, datetime, timezone
 from icalendar import Calendar, Event, vText
 
@@ -74,6 +75,20 @@ class NotionClient:
         if https_url.startswith("notion://"):
             return https_url
         return f"notion://{https_url.lstrip('/')}"
+
+    @staticmethod
+    def _notion_app_click_link(notion_deep_url: str) -> str:
+        """
+        HTTPS-Link für Outlook (erlaubt nur http/https in <a href>).
+        go.html leitet im Browser auf notion:// weiter.
+        """
+        if not notion_deep_url:
+            return ""
+        base = os.getenv(
+            "NOTION_APP_REDIRECT_BASE",
+            "https://kurtsoeser.github.io/Notion-iCal",
+        ).rstrip("/")
+        return f"{base}/go.html?u={quote(notion_deep_url, safe='')}"
 
     @staticmethod
     def _links_from_prop(
@@ -163,10 +178,11 @@ class NotionClient:
             sections.append(
                 NotionClient._desc_section("Infos", f"{title}\n{page_url}")
             )
+            notion_app = NotionClient._notion_deep_link(page_url)
             sections.append(
                 NotionClient._desc_section(
                     "In Notion öffnen",
-                    NotionClient._notion_deep_link(page_url),
+                    NotionClient._notion_app_click_link(notion_app) or notion_app,
                 )
             )
         if meeting_link:
@@ -207,13 +223,12 @@ class NotionClient:
                     "Infos", NotionClient._html_link(page_url, title)
                 )
             )
+            notion_app = NotionClient._notion_deep_link(page_url)
+            app_href = NotionClient._notion_app_click_link(notion_app) or notion_app
             rows.append(
                 NotionClient._html_row(
                     "In Notion öffnen",
-                    NotionClient._html_link(
-                        NotionClient._notion_deep_link(page_url),
-                        "in Notion öffnen",
-                    ),
+                    NotionClient._html_link(app_href, "in Notion öffnen"),
                 )
             )
 

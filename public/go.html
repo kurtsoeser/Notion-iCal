@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notion öffnen</title>
+  <script>
+    (function () {
+      var raw = new URLSearchParams(location.search).get("u");
+      if (!raw) return;
+      var target;
+      try {
+        target = decodeURIComponent(raw);
+      } catch (e) {
+        return;
+      }
+      if (!/^notion:\/\//i.test(target)) return;
+      location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Notion wird geöffnet …</p>
+  <p>Falls nichts passiert: <a id="fallback">In Notion öffnen</a></p>
+  <script>
+    (function () {
+      var raw = new URLSearchParams(location.search).get("u");
+      if (!raw) return;
+      var target;
+      try {
+        target = decodeURIComponent(raw);
+      } catch (e) {
+        return;
+      }
+      if (!/^notion:\/\//i.test(target)) return;
+      var link = document.getElementById("fallback");
+      link.href = target;
+      link.textContent = "In Notion öffnen";
+    })();
+  </script>
+</body>
+</html>
