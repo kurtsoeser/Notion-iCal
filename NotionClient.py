@@ -1,5 +1,3 @@
-import base64
-import html
 import os
 import requests
 from datetime import date, datetime, timezone
@@ -77,10 +75,6 @@ class NotionClient:
         return f"notion://{https_url.lstrip('/')}"
 
     @staticmethod
-    def _safe_href(url: str) -> str:
-        return (url or "").replace('"', "%22").replace("\n", "").replace("\r", "")
-
-    @staticmethod
     def _links_from_prop(
         prop: dict | None, default_label: str = "Link öffnen"
     ) -> list[tuple[str, str]]:
@@ -117,31 +111,14 @@ class NotionClient:
         return links
 
     @staticmethod
-    def _html_escape(text: str) -> str:
-        return html.escape(text or "", quote=True)
-
-    @staticmethod
-    def _html_link(url: str, label: str, title: str = "") -> str:
-        if not url:
+    def _desc_section(heading: str, body: str) -> str:
+        body = (body or "").strip()
+        if not body:
             return ""
-        title_attr = f' title="{NotionClient._html_escape(title)}"' if title else ""
-        return (
-            f'<a href="{NotionClient._safe_href(url)}" target="_blank"'
-            f'{title_attr}>{NotionClient._html_escape(label)}</a>'
-        )
+        return f"── {heading} ──\n{body}"
 
     @staticmethod
-    def _html_table_row(label: str, cell_html: str) -> str:
-        return (
-            "<tr>"
-            f'<td style="font-weight:bold;background:#f3f2f1;padding:6px 10px;'
-            f'width:150px;vertical-align:top;">{NotionClient._html_escape(label)}</td>'
-            f'<td style="padding:6px 10px;vertical-align:top;">{cell_html}</td>'
-            "</tr>"
-        )
-
-    @staticmethod
-    def _build_description_plain(
+    def _build_description(
         title: str,
         beschreibung: str,
         page_url: str,
@@ -149,95 +126,48 @@ class NotionClient:
         veranstaltungs_links: list[tuple[str, str]],
         aufzeichnung_links: list[tuple[str, str]],
     ) -> str:
-        parts = []
+        """
+        Klartext-Beschreibung für Outlook-Internetkalender.
+        (Kein HTML/Base64 in X-ALT-DESC – Outlook zeigt das sonst als Müllzeichen.)
+        """
+        sections = []
+
         if beschreibung:
-            parts.append(beschreibung)
-        if page_url:
-            parts.append(f"{title}\n{page_url}")
-            parts.append(
-                f"in Notion öffnen\n{NotionClient._notion_deep_link(page_url)}"
+            sections.append(
+                NotionClient._desc_section("Beschreibung", beschreibung)
             )
-        if meeting_link:
-            parts.append(f"Meeting-Link\n{meeting_link}")
-        for label, url in veranstaltungs_links:
-            parts.append(f"Veranstaltungslink\n{label}\n{url}")
-        for label, url in aufzeichnung_links:
-            parts.append(f"Aufzeichnung\n{label}\n{url}")
-        return "\n\n".join(parts)
-
-    @staticmethod
-    def _build_description_html(
-        title: str,
-        beschreibung: str,
-        page_url: str,
-        meeting_link: str,
-        veranstaltungs_links: list[tuple[str, str]],
-        aufzeichnung_links: list[tuple[str, str]],
-    ) -> str:
-        rows = []
-        if beschreibung:
-            safe = NotionClient._html_escape(beschreibung).replace("\n", "<br>")
-            rows.append(NotionClient._html_table_row("Beschreibung", safe))
 
         if page_url:
-            rows.append(
-                NotionClient._html_table_row(
-                    "Infos",
-                    NotionClient._html_link(page_url, title, title),
+            sections.append(
+                NotionClient._desc_section(
+                    "Infos", f"{title}\n{page_url}"
                 )
             )
-            notion_app = NotionClient._notion_deep_link(page_url)
-            rows.append(
-                NotionClient._html_table_row(
+            sections.append(
+                NotionClient._desc_section(
                     "In Notion öffnen",
-                    NotionClient._html_link(
-                        notion_app,
-                        "in Notion öffnen",
-                        "In der Notion-App öffnen",
-                    ),
+                    NotionClient._notion_deep_link(page_url),
                 )
             )
 
         if meeting_link:
-            rows.append(
-                NotionClient._html_table_row(
-                    "Meeting-Link",
-                    NotionClient._html_link(
-                        meeting_link, "Teams / Meeting beitreten", meeting_link
-                    ),
+            sections.append(
+                NotionClient._desc_section("Meeting-Link", meeting_link)
+            )
+
+        for label, url in veranstaltungs_links:
+            sections.append(
+                NotionClient._desc_section(
+                    "Veranstaltungslink", f"{label}\n{url}"
                 )
             )
 
-        if veranstaltungs_links:
-            links_html = "<br>".join(
-                NotionClient._html_link(url, label, label)
-                for label, url in veranstaltungs_links
-            )
-            rows.append(
-                NotionClient._html_table_row("Veranstaltungslink", links_html)
+        for label, url in aufzeichnung_links:
+            sections.append(
+                NotionClient._desc_section("Aufzeichnung", f"{label}\n{url}")
             )
 
-        if aufzeichnung_links:
-            links_html = "<br>".join(
-                NotionClient._html_link(url, label, label)
-                for label, url in aufzeichnung_links
-            )
-            rows.append(NotionClient._html_table_row("Aufzeichnung", links_html))
-
-        if not rows:
-            return ""
-
-        table = (
-            '<table border="1" cellpadding="0" cellspacing="0" '
-            'style="border-collapse:collapse;font-family:Segoe UI,Arial,sans-serif;'
-            'font-size:11pt;border-color:#e1dfdd;">'
-            + "".join(rows)
-            + "</table>"
-        )
-        return (
-            "<!DOCTYPE HTML><html><head><meta charset=\"UTF-8\"></head>"
-            f"<body>{table}</body></html>"
-        )
+        return "\n\n".join(s for s in sections if s)
 
     def _fetch_all_database_items(self, database_id):
         """Notion liefert max. 100 Einträge pro Request – alle Seiten laden."""
@@ -388,16 +318,9 @@ class NotionClient:
                 item.get("veranstaltungs_links") or [],
                 item.get("aufzeichnung_links") or [],
             )
-            plain_desc = self._build_description_plain(*desc_args)
-            html_desc = self._build_description_html(*desc_args)
-            if plain_desc:
-                event.add("description", plain_desc)
-            if html_desc:
-                encoded = base64.b64encode(html_desc.encode("utf-8")).decode("ascii")
-                alt = vText(encoded)
-                alt.params["FMTTYPE"] = "text/html"
-                alt.params["ENCODING"] = "BASE64"
-                event.add("x-alt-desc", alt)
+            description = self._build_description(*desc_args)
+            if description:
+                event.add("description", description)
 
             st, en = item["start"], item.get("end")
             if isinstance(st, datetime):
