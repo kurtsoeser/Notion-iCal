@@ -1,6 +1,6 @@
 import requests
 from datetime import date, datetime, timezone
-from icalendar import Calendar, Event
+from icalendar import Calendar, Event, vText
 
 
 class NotionClient:
@@ -21,11 +21,23 @@ class NotionClient:
         return datetime.fromisoformat(normalized)
 
     @staticmethod
+    def _rich_text_plain(prop: dict | None) -> str:
+        if not prop:
+            return ""
+        chunks = prop.get("rich_text") or prop.get("title") or []
+        return "".join(c.get("plain_text", "") for c in chunks).strip()
+
+    @staticmethod
     def _to_utc(dt: datetime) -> datetime:
-        """Outlook braucht echte UTC-Zeiten (…Z), nicht TZID ohne VTIMEZONE."""
         if dt.tzinfo is None:
             return dt.replace(tzinfo=timezone.utc)
         return dt.astimezone(timezone.utc)
+
+    @staticmethod
+    def _parse_iso_datetime(s: str) -> datetime | None:
+        if not s:
+            return None
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
     def get_database(self, database_id):
         url = f"https://api.notion.com/v1/databases/{database_id}/query"
@@ -54,14 +66,12 @@ class NotionClient:
         items = body["results"]
         for item in items:
             props = item["properties"]
-            titel_chunks = (props.get("Titel") or {}).get("title") or []
-            if titel_chunks:
-                title = titel_chunks[0].get("plain_text") or "Ohne Titel"
-            else:
-                title = "Ohne Titel"
+            title = self._rich_text_plain(props.get("Titel")) or "Ohne Titel"
 
             sel = (props.get("Kategorie") or {}).get("select")
             kategorie = sel.get("name") if sel else ""
+
+            beschreibung = self._rich_text_plain(props.get("Beschreibung"))
 
             date_obj = (props.get("Datum") or {}).get("date")
             if not date_obj or not date_obj.get("start"):
@@ -74,14 +84,20 @@ class NotionClient:
             )
 
             page_url = item["url"]
+            page_id = item["id"].replace("-", "")
             summary = f"{title} [{kategorie}]" if kategorie else title
 
             events.append(
                 {
+                    "uid": f"{page_id}@notion.so",
                     "title": summary,
                     "start": start_v,
                     "end": end_v,
                     "url": page_url,
+                    "description": beschreibung,
+                    "last_modified": self._parse_iso_datetime(
+                        item.get("last_edited_time")
+                    ),
                 }
             )
 
@@ -89,15 +105,36 @@ class NotionClient:
 
     def export_ical(self, items):
         self.cal = Calendar()
-        self.cal.add("prodid", "-//Notion-iCal//DE")
+        self.cal.add("prodid", "-//Notion-iCal//kurtrocks//DE")
         self.cal.add("version", "2.0")
         self.cal.add("calscale", "GREGORIAN")
+        self.cal.add("method", "PUBLISH")
+        self.cal.add("name", "Notion Termine")
+        self.cal.add("x-wr-calname", "Notion Termine")
+        self.cal.add("x-wr-timezone", "Europe/Vienna")
+
+        now = datetime.now(timezone.utc)
 
         for item in items:
             event = Event()
             event.add("summary", item["title"])
-            if item.get("url"):
-                event.add("description", item["url"])
+            event.add("uid", item["uid"])
+            event.add("dtstamp", item.get("last_modified") or now)
+            event.add("sequence", 0)
+            event.add("status", "CONFIRMED")
+            event.add("transp", "OPAQUE")
+
+            page_url = item.get("url") or ""
+            if page_url:
+                event.add("url", vText(page_url))
+
+            desc_parts = []
+            if item.get("description"):
+                desc_parts.append(item["description"])
+            if page_url:
+                desc_parts.append(f"Notion: {page_url}")
+            if desc_parts:
+                event.add("description", "\n\n".join(desc_parts))
 
             st, en = item["start"], item.get("end")
             if isinstance(st, datetime):
@@ -108,9 +145,13 @@ class NotionClient:
                 event.add("dtstart", st)
                 if en and isinstance(en, date):
                     event.add("dtend", en)
+                else:
+                    from datetime import timedelta
+
+                    event.add("dtend", st + timedelta(days=1))
 
             self.cal.add_component(event)
 
         with open("Notion.ics", "wb") as f:
             f.write(self.cal.to_ical())
-            print("Completely Wrote to Disk")
+            print(f"Completely Wrote to Disk ({len(items)} events)")
